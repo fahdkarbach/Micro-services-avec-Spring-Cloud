@@ -1,0 +1,25 @@
+<div class="container">
+    <input type="text" placeholder="Product name" #pn>
+    <input type="number" placeholder="Product Price" #pp>
+    <input type="number" placeholder="Product Quantity" #pq>
+    <input type="button" value="Create" (click)="create(pn.value,pp.value,pq.value)">
+<br><br>
+    <table class="table" *ngIf="products">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Price</th><th>Qte</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products._embedded.products">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.quantity}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(p.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

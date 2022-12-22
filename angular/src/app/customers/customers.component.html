@@ -1,0 +1,22 @@
+<div class="container">
+    <input type="text" placeholder="Customer Name" #cn>
+    <input type="text" placeholder="Customer Email" #ce>
+    <input type="button" value="Create" (click)="create(cn.value,ce.value)">
+    
+    <table class="table" *ngIf="customers">
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of customers._embedded.customers">
+                <td>{{c.id}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.email}}</td>
+                <td><button class="btn btn-success" (click)="getOrders(c)">Orders</button></td>
+                <td><button class="btn btn-danger" (click)="delete(c.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
